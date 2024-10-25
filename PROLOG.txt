@@ -1,0 +1,155 @@
+
+
+Q.1)Write a program in Haskell to find factorial of a number using recursion. Program
+should take user input.
+
+fact :: Int->Int
+fact n | n == 0 = 1
+fact n | n/= 0 = n * fact (n-1)
+main = do
+putStr "Input a number :"
+inp <- getLine
+let x = read inp
+print(fact x)
+
+****************************
+
+Q.2) Write a program in Haskell to check palindrome data using strings or lists as
+appropriate. Program should take user input.
+
+- Haskell code for checking palindrome
+palindrome :: String -> String
+palindrome x
+| x == reverse x = "Palindrome" 
+| otherwise = "NOT Palindrome"
+main :: IO ()
+main = do
+putStr "Enter the string: " 
+s <- getLine
+putStrLn (palindrome s)
+
+******************************************************
+
+Q.3)write a Haskell program to demonstrate simple Listcomprehensions(minimum 5 examples).
+
+- List Comprehension Examples
+
+main = do
+print [x*2 | x <- [1..10]]
+print [x*2 | x <- [1..10], mod x 2 == 0]
+print [x | x <- [10..20], x /= 13, x /= 15, x /= 17]
+print [x | x <- [1..100], x `mod` 7 == 0, x >= 50]
+print [x^2 | x <- [1..10]]
+
+*****************************************************
+Q.4) Write Haskell program to demonstrate infinite lists. Consider Fibonacci series.
+
+fibonacci :: [Integer]
+fibonacci = 0:1: zipWith (+) fibonacci (tail fibonacci)
+main::IO()
+main = do
+	putStr "Input a number :"
+	inp <- getLine
+	let x = read inp
+	print(take x fibonacci)
+
+
+************************************************************
+
+--Prolog  (AnyName.pl)
+Q.5)Write any one example of knowledge base(set of different facts and rules).Run different queries(minimum 3) on it.
+
+% Facts:
+likes(alice, chocolate).
+likes(bob, ice_cream).
+likes(alice, ice_cream).
+
+% Rules:
+friends(X, Y) :- 
+    likes(X, Z), 
+    likes(Y, Z), 
+    X \= Y.       % X and Y are friends if they like the same thing but are different people.
+
+Query1:-
+?- likes(alice, What).
+Result:-
+What = chocolate ;
+What = ice_cream.
+
+Query2:-
+?- friends(alice, Who).
+Result:-
+Who = bob.
+
+Query3:-
+?- likes(bob, chocolate).
+Result:-
+false.
+
+*******************************************************
+Q.6)Write a code in prolog to explain different arithmetic operations(minimum 5).
+
+% Addition
+add(X, Y, Result) :- 
+    Result is X + Y.
+
+% Subtraction
+subtract(X, Y, Result) :- 
+    Result is X - Y.
+
+% Multiplication
+multiply(X, Y, Result) :- 
+    Result is X * Y.
+
+% Division
+divide(X, Y, Result) :- 
+    Y \= 0,           % Ensure we don't divide by zero
+    Result is X / Y.
+
+% Modulus
+modulus(X, Y, Result) :- 
+    Y \= 0,           % Ensure we don't divide by zero
+    Result is X mod Y.
+
+
+Query1:-
+?- add(5, 3, Result).
+Result = 8.
+
+Query2:-
+?- subtract(10, 4, Result).
+Result = 6.
+
+Query3:-
+?- multiply(6, 7, Result).
+Result = 42.
+
+Query4:-
+?- divide(20, 4, Result).
+Result = 5.0.
+
+Query5:-
+?- modulus(17, 5, Result).
+Result = 2.
+
+***************************************************
+Q.7)Write a program to check whether a list is palindrome or not. Program in Prolog (hint :
+use tail structure in prolog)
+
+palindrome ([]) :- write('palindrome').
+palindrome ([]) :- write('palindrome').
+palindrome(L) :- append([H|T], [H], L), palindrome(T);
+write('Not a palindrome').
+
+
+Result:-
+palindrome([r,a,c,e,c,a,r]).
+palindrome.
+
+
+
+
+
+
+
+
